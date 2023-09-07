@@ -4,7 +4,40 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomeDocumentDataSlicesSlice = ImageSlice;
+type AuthorDocumentDataSlicesSlice = AuthorSlice;
+
+/**
+ * Content for Author documents
+ */
+interface AuthorDocumentData {
+	/**
+	 * Slice Zone field in *Author*
+	 *
+	 * - **Field Type**: Slice Zone
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: author.slices[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#slices
+	 */
+	slices: prismic.SliceZone<AuthorDocumentDataSlicesSlice>;
+}
+
+/**
+ * Author document from Prismic
+ *
+ * - **API ID**: `author`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AuthorDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<AuthorDocumentData>,
+	'author',
+	Lang
+>;
+
+type HomeDocumentDataSlicesSlice = ImageSlice | NameSlice;
 
 /**
  * Content for Home documents
@@ -63,13 +96,55 @@ interface HomeDocumentData {
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type HomeDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+export type HomeDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
 	Simplify<HomeDocumentData>,
 	'home',
 	Lang
 >;
 
-export type AllDocumentTypes = HomeDocument;
+export type AllDocumentTypes = AuthorDocument | HomeDocument;
+
+/**
+ * Primary content in *Author → Items*
+ */
+export interface AuthorSliceDefaultItem {
+	/**
+	 * Author field in *Author → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: author.items[].author
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	author: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Author Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AuthorSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	Simplify<AuthorSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Author*
+ */
+type AuthorSliceVariation = AuthorSliceDefault;
+
+/**
+ * Author Shared Slice
+ *
+ * - **API ID**: `author`
+ * - **Description**: Author
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AuthorSlice = prismic.SharedSlice<'author', AuthorSliceVariation>;
 
 /**
  * Primary content in *Image → Primary*
@@ -113,6 +188,48 @@ type ImageSliceVariation = ImageSliceDefault;
  */
 export type ImageSlice = prismic.SharedSlice<'image', ImageSliceVariation>;
 
+/**
+ * Primary content in *Name → Primary*
+ */
+export interface NameSliceDefaultPrimary {
+	/**
+	 * Name field in *Name → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: name.primary.name
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	name: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Name Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NameSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<NameSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Name*
+ */
+type NameSliceVariation = NameSliceDefault;
+
+/**
+ * Name Shared Slice
+ *
+ * - **API ID**: `name`
+ * - **Description**: Name
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NameSlice = prismic.SharedSlice<'name', NameSliceVariation>;
+
 declare module '@prismicio/client' {
 	interface CreateClient {
 		(
@@ -123,14 +240,25 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
+			AuthorDocument,
+			AuthorDocumentData,
+			AuthorDocumentDataSlicesSlice,
 			HomeDocument,
 			HomeDocumentData,
 			HomeDocumentDataSlicesSlice,
 			AllDocumentTypes,
+			AuthorSlice,
+			AuthorSliceDefaultItem,
+			AuthorSliceVariation,
+			AuthorSliceDefault,
 			ImageSlice,
 			ImageSliceDefaultPrimary,
 			ImageSliceVariation,
-			ImageSliceDefault
+			ImageSliceDefault,
+			NameSlice,
+			NameSliceDefaultPrimary,
+			NameSliceVariation,
+			NameSliceDefault
 		};
 	}
 }
