@@ -4,7 +4,6 @@
 		"variation": "default",
 		"primary": {
 			"image": {
-				"__TYPE__": "ImageContent",
 				"origin": {
 					"id": "main",
 					"url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
@@ -22,7 +21,54 @@
 					},
 					"background": "transparent"
 				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"name": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Esse dolor ut commodo incididunt cillum eu."
+						}
+					}
+				]
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nulla aliqua eiusmod officia et incididunt laboris enim dolor pariatur. Aute duis excepteur occaecat duis est enim qui dolor officia eiusmod proident nisi excepteur."
+						}
+					}
+				]
+			},
+			"opleiding": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Elit sunt deserunt do occaecat."
+						}
+					}
+				]
+			},
+			"opleiding2": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Qui in ipsum voluptate duis. Elit enim veniam do magna minim consectetur duis ad proident sit."
+						}
+					}
+				]
 			}
 		},
 		"items": []
