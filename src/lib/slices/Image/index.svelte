@@ -23,8 +23,10 @@
 
 	<article>
 		<p class="opleidingen">Opleidingen</p>
-		<p class="opleiding2">{slice.primary.opleiding[0].text}</p>
-		<p class="opleiding3">{slice.primary.opleiding2[0].text}</p>
+			<article class="All-opleidingen">
+				<p class="opleiding2">{slice.primary.opleiding[0].text}</p>
+				<p class="opleiding3">{slice.primary.opleiding2[0].text}</p>
+			</article>
 	</article>
 </section>
 
@@ -34,6 +36,7 @@
 	--primary: black;
 	--secondary: gold;
 	--tertiary: white;
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
 img{
@@ -65,7 +68,7 @@ img{
 	font-size: 25px;
 	
 	padding: 20px;
-	border-radius: 20px;
+	border-radius: 15px;
 	margin-left: 150px;
 	margin-right: 150px;
 	margin-top: 0px;
@@ -99,10 +102,12 @@ img{
 	font-size: 25px;
 	margin: 10px;
 	padding: 20px;
-	border-radius: 20px;
 	margin-left: 150px;
 	margin-right: 150px;
+	margin-bottom: 0px;
+	margin-top: 0px;
 
+	border-radius: 15px;
 	border-style: solid;
 	border-width: 1px;
 	border-color: var(--secondary);
@@ -119,6 +124,9 @@ img{
 	
 	margin-left: 150px;
 	margin-right: 150px;
+
+	border-top-right-radius: 15px;
+	border-top-left-radius: 15px;
 }
 
 .opleiding3{
@@ -132,7 +140,12 @@ img{
 
 	margin-left: 150px;
 	margin-right: 150px;
+
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
 }
+
+
 
 .naam:hover{
   animation-name: scale;
