@@ -4,39 +4,6 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type AuthorDocumentDataSlicesSlice = AuthorSlice;
-
-/**
- * Content for Author documents
- */
-interface AuthorDocumentData {
-	/**
-	 * Slice Zone field in *Author*
-	 *
-	 * - **Field Type**: Slice Zone
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: author.slices[]
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#slices
-	 */
-	slices: prismic.SliceZone<AuthorDocumentDataSlicesSlice>;
-}
-
-/**
- * Author document from Prismic
- *
- * - **API ID**: `author`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type AuthorDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
-	Simplify<AuthorDocumentData>,
-	'author',
-	Lang
->;
-
 type HomeDocumentDataSlicesSlice = ImageSlice | NameSlice;
 
 /**
@@ -102,49 +69,7 @@ export type HomeDocument<Lang extends string = string> = prismic.PrismicDocument
 	Lang
 >;
 
-export type AllDocumentTypes = AuthorDocument | HomeDocument;
-
-/**
- * Primary content in *Author → Items*
- */
-export interface AuthorSliceDefaultItem {
-	/**
-	 * Author field in *Author → Items*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: author.items[].author
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-	 */
-	author: prismic.RichTextField;
-}
-
-/**
- * Default variation for Author Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type AuthorSliceDefault = prismic.SharedSliceVariation<
-	'default',
-	Record<string, never>,
-	Simplify<AuthorSliceDefaultItem>
->;
-
-/**
- * Slice variation for *Author*
- */
-type AuthorSliceVariation = AuthorSliceDefault;
-
-/**
- * Author Shared Slice
- *
- * - **API ID**: `author`
- * - **Description**: Author
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type AuthorSlice = prismic.SharedSlice<'author', AuthorSliceVariation>;
+export type AllDocumentTypes = HomeDocument;
 
 /**
  * Primary content in *Image → Primary*
@@ -280,17 +205,10 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
-			AuthorDocument,
-			AuthorDocumentData,
-			AuthorDocumentDataSlicesSlice,
 			HomeDocument,
 			HomeDocumentData,
 			HomeDocumentDataSlicesSlice,
 			AllDocumentTypes,
-			AuthorSlice,
-			AuthorSliceDefaultItem,
-			AuthorSliceVariation,
-			AuthorSliceDefault,
 			ImageSlice,
 			ImageSliceDefaultPrimary,
 			ImageSliceVariation,
