@@ -18,7 +18,6 @@
 			Hallo allemaal, mijn naam is Mohamed en ik ben 23 jaar. Ik volg de studie frontend & design op het HVA
 			en werk daarnaast als junior IT systeembeheerder bij vincent TV producties. Mijn hobbys zijn gamen gymmen en ga vaak uit eten met vrienden of familie.
 		</p>
-		
 	</article>
 
 	<article>

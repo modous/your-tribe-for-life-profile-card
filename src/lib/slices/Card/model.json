@@ -1,0 +1,63 @@
+{
+	"id": "image",
+	"type": "SharedSlice",
+	"name": "Card",
+	"description": "Image",
+	"variations": [
+		{
+			"id": "default",
+			"name": "Default",
+			"docURL": "...",
+			"version": "initial",
+			"description": "Default",
+			"imageUrl": "",
+			"primary": {
+				"image": {
+					"type": "Image",
+					"config": {
+						"label": "Image",
+						"constraint": {},
+						"thumbnails": []
+					}
+				},
+				"name": {
+					"type": "StructuredText",
+					"config": {
+						"label": "name",
+						"placeholder": "",
+						"allowTargetBlank": true,
+						"single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+					}
+				},
+				"title": {
+					"type": "StructuredText",
+					"config": {
+						"label": "title",
+						"placeholder": "",
+						"allowTargetBlank": true,
+						"single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+					}
+				},
+				"opleiding": {
+					"type": "StructuredText",
+					"config": {
+						"label": "opleiding",
+						"placeholder": "",
+						"allowTargetBlank": true,
+						"single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+					}
+				},
+				"opleiding2": {
+					"type": "StructuredText",
+					"config": {
+						"label": "opleiding2",
+						"placeholder": "",
+						"allowTargetBlank": true,
+						"single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+					}
+				}
+			},
+			"items": {}
+		}
+	]
+}

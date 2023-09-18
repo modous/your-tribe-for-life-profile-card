@@ -72,11 +72,11 @@ export type HomeDocument<Lang extends string = string> = prismic.PrismicDocument
 export type AllDocumentTypes = HomeDocument;
 
 /**
- * Primary content in *Image → Primary*
+ * Primary content in *Card → Primary*
  */
 export interface ImageSliceDefaultPrimary {
 	/**
-	 * Image field in *Image → Primary*
+	 * Image field in *Card → Primary*
 	 *
 	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
@@ -86,7 +86,7 @@ export interface ImageSliceDefaultPrimary {
 	image: prismic.ImageField<never>;
 
 	/**
-	 * name field in *Image → Primary*
+	 * name field in *Card → Primary*
 	 *
 	 * - **Field Type**: Rich Text
 	 * - **Placeholder**: *None*
@@ -96,7 +96,7 @@ export interface ImageSliceDefaultPrimary {
 	name: prismic.RichTextField;
 
 	/**
-	 * title field in *Image → Primary*
+	 * title field in *Card → Primary*
 	 *
 	 * - **Field Type**: Rich Text
 	 * - **Placeholder**: *None*
@@ -106,7 +106,7 @@ export interface ImageSliceDefaultPrimary {
 	title: prismic.RichTextField;
 
 	/**
-	 * opleiding field in *Image → Primary*
+	 * opleiding field in *Card → Primary*
 	 *
 	 * - **Field Type**: Rich Text
 	 * - **Placeholder**: *None*
@@ -116,7 +116,7 @@ export interface ImageSliceDefaultPrimary {
 	opleiding: prismic.RichTextField;
 
 	/**
-	 * opleiding2 field in *Image → Primary*
+	 * opleiding2 field in *Card → Primary*
 	 *
 	 * - **Field Type**: Rich Text
 	 * - **Placeholder**: *None*
@@ -127,7 +127,7 @@ export interface ImageSliceDefaultPrimary {
 }
 
 /**
- * Default variation for Image Slice
+ * Default variation for Card Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -140,12 +140,12 @@ export type ImageSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Slice variation for *Image*
+ * Slice variation for *Card*
  */
 type ImageSliceVariation = ImageSliceDefault;
 
 /**
- * Image Shared Slice
+ * Card Shared Slice
  *
  * - **API ID**: `image`
  * - **Description**: Image
